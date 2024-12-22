@@ -1,0 +1,29 @@
+{
+  "name": "moviedb",
+  "version": "1.0.0",
+  "description": "or CMDB for short",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fatme496/MovieDB.git"
+  },
+  "keywords": [
+    "database"
+  ],
+  "author": "fatme",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fatme496/MovieDB/issues"
+  },
+  "homepage": "https://github.com/fatme496/MovieDB#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
