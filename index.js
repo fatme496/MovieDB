@@ -22,16 +22,32 @@ app.get('/test', (req, res) => {
     res.send('{status:200, message:"ok"}');
 });
 
-//Setting Current Time
+
+//Adding /time page
+app.get('/time', (req, res) => {
+    //Setting Current Time
 const currentTime = new Date();
 const hours = currentTime.getHours();
 const minutes = currentTime.getMinutes();
 
 //Time Format 
 const formattedTime = hours+":"+minutes;
-console.log(formattedTime);
-
-//Adding /time page
-app.get('/time', (req, res) => {
     res.send("{status:200, message: "+ formattedTime + "}");
 });
+
+//step 4 
+app.get('/hello/:id?', (req, res) => {
+    const id = req.params.id; // Get the `id`
+    res.json({ status: 200, message: `Hello, ${id}` }); // Send the JSON response
+});
+
+app.get('/search', (req, res) => {
+    const search = req.query.s; // Extract the `s` query parameter
+    if (search) {
+      res.json({ status: 200, message: 'ok', data: search }); // Success response
+    } else {
+      res.status(500).json({ error: true, message: 'you have to provide a search' }); // Error response
+    }
+  });
+  
+  
