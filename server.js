@@ -16,3 +16,22 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
   });
+
+//Adding /test page
+app.get('/test', (req, res) => {
+    res.send('{status:200, message:"ok"}');
+});
+
+//Setting Current Time
+const currentTime = new Date();
+const hours = currentTime.getHours();
+const minutes = currentTime.getMinutes();
+
+//Time Format 
+const formattedTime = hours+":"+minutes;
+console.log(formattedTime);
+
+//Adding /time page
+app.get('/time', (req, res) => {
+    res.send("{status:200, message: "+ formattedTime + "}");
+});
