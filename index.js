@@ -1,3 +1,9 @@
+const movies = [
+    { title: 'Jaws', year: 1975, rating: 8 },
+    { title: 'Avatar', year: 2009, rating: 7.8 },
+    { title: 'Brazil', year: 1985, rating: 8 },
+    { title: 'الإرهاب والكباب‎', year: 1992, rating: 6.2 }
+]
 //Import Express
 const express = require('express');
 
@@ -50,4 +56,25 @@ app.get('/search', (req, res) => {
     }
   });
   
+ //Step 5
+ 
+ // CREATE
+app.get('/movies/create', (req, res) => {
+    res.json({ status: 200, message: "This is the create route." });
+  });
   
+  // READ
+  app.get('/movies/read', (req, res) => {
+    res.json({ status: 200, data: movies });
+  });
+  
+  // UPDATE
+  app.get('/movies/update', (req, res) => {
+    res.json({ status: 200, message: "This is the update route." });
+  });
+  
+  // DELETE
+  app.get('/movies/delete', (req, res) => {
+    res.json({ status: 200, message: "This is the delete route." });
+  });
+   
