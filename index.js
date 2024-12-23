@@ -134,7 +134,7 @@ app.get('/movies/add', (req, res) => {
     res.json({ status: 200, data: movies });
 });
 
-//Step 9
+//Step 9 - DELETE
 app.get('/movies/delete/:id', (req, res) => {
     const id = parseInt(req.params.id); // Get the ID from the URL and convert to a number
 
