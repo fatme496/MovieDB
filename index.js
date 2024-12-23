@@ -109,7 +109,7 @@ app.get('/movies/read/id/:id', (req, res) => {
     }
 });
 
-//Step 8
+//Step 8 - CREATE
 app.get('/movies/add', (req, res) => {
     const { title, year, rating } = req.query;
 
@@ -133,6 +133,29 @@ app.get('/movies/add', (req, res) => {
     // Respond with the updated list of movies
     res.json({ status: 200, data: movies });
 });
+/**
+ * app.post('/movies', (req, res) => {
+  const { title, year, rating } = req.query;
+
+  if (!title || !year || isNaN(year) || year.length !== 4) {
+    return res.status(403).json({
+      status: 403,
+      error: true,
+      message: 'You cannot create a movie without providing a title and a year'
+    });
+  }
+
+  const newMovie = {
+    title,
+    year: parseInt(year),
+    rating: rating ? parseFloat(rating) : 4
+  };
+
+  movies.push(newMovie);
+  res.json({ status: 200, data: movies });
+});
+
+*/
 
 //Step 9 - DELETE
 app.get('/movies/delete/:id', (req, res) => {
@@ -152,6 +175,20 @@ app.get('/movies/delete/:id', (req, res) => {
         });
     }
 });
+/**app.delete('/movies/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+
+    if (id >= 0 && id < movies.length) {
+        movies.splice(id, 1);
+        res.json({ status: 200, data: movies });
+    } else {
+        res.status(404).json({
+            status: 404,
+            error: true,
+            message: `The movie with ID ${id} does not exist`
+        });
+    }
+});*/
 
 //Step 10 - UPDATE
 app.get('/movies/update/:id', (req, res) => {
@@ -175,7 +212,7 @@ app.get('/movies/update/:id', (req, res) => {
     }
 });
 
-//Step 11
+//Step 11 - Use HTTP Verbs
 
 
 
