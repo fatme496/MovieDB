@@ -109,3 +109,74 @@ app.get('/movies/read/id/:id', (req, res) => {
     }
 });
 
+//Step 8
+app.get('/movies/add', (req, res) => {
+    const { title, year, rating } = req.query;
+
+    // Validation
+    if (!title || !year || isNaN(year) || year.length !== 4) {
+        res.status(403).json({
+            status: 403,
+            error: true,
+            message: 'You cannot create a movie without providing a title and a year'
+        });
+        return;
+    }
+
+    // Use default rating if not provided
+    const newRating = rating ? parseFloat(rating) : 4;
+
+    // Add the new movie to the array
+    const newMovie = { title, year: parseInt(year), rating: newRating };
+    movies.push(newMovie);
+
+    // Respond with the updated list of movies
+    res.json({ status: 200, data: movies });
+});
+
+//Step 9
+app.get('/movies/delete/:id', (req, res) => {
+    const id = parseInt(req.params.id); // Get the ID from the URL and convert to a number
+
+    // Validate the ID
+    if (id >= 0 && id < movies.length) {
+        // Remove the movie at the specified ID
+        movies.splice(id, 1);
+        res.json({ status: 200, data: movies }); // Return the updated movie list
+    } else {
+        // Respond with an error if the ID is invalid
+        res.status(404).json({
+            status: 404,
+            error: true,
+            message: `The movie ${id} does not exist`
+        });
+    }
+});
+
+//Step 10
+app.get('/movies/update/:id', (req, res) => {
+    const id = parseInt(req.params.id); // Get the ID from the URL
+    const { title, rating, year } = req.query; // Extract query parameters
+
+    // Validate ID
+    if (id >= 0 && id < movies.length) {
+        // Update movie fields only if provided
+        if (title) movies[id].title = title;
+        if (rating) movies[id].rating = parseFloat(rating);
+        if (year && !isNaN(year) && year.length === 4) movies[id].year = parseInt(year);
+
+        res.json({ status: 200, data: movies }); // Return the updated movie list
+    } else {
+        res.status(404).json({
+            status: 404,
+            error: true,
+            message: `The movie with ID ${id} does not exist`
+        });
+    }
+});
+
+//Step 11
+
+
+
+
