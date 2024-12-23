@@ -153,7 +153,7 @@ app.get('/movies/delete/:id', (req, res) => {
     }
 });
 
-//Step 10
+//Step 10 - UPDATE
 app.get('/movies/update/:id', (req, res) => {
     const id = parseInt(req.params.id); // Get the ID from the URL
     const { title, rating, year } = req.query; // Extract query parameters
